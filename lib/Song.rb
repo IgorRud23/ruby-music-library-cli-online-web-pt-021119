@@ -49,7 +49,14 @@ def self.find_or_create_by_name(song_name)
 end
 
 def self.new_from_filename(file_name)
-  
+  file_bits = file_name.gsub(/(\.mp3)/,'')
+    file_bits = file_bits.split(" - ")
+    artist = Artist.find_or_create_by_name(file_bits[0])
+    genre = Genre.find_or_create_by_name(file_bits[2])
+    song = Song.find_or_create_by_name(file_bits[1])
+    song.genre = genre
+    song.artist = artist
+    song
 #  name = file_name.split(" - ")
 #  artist_name, song_name, genre_name = names[0], names[1], names[2].gsub(".mp3", "")
 
@@ -59,7 +66,7 @@ def self.new_from_filename(file_name)
 end
 
 def self.create_from_filename(file_name)
-new_from_filename(file_name).tap {|song| song.save }
+new_from_filename(file_name).tap {|song| song.save}
 end
 
 end
