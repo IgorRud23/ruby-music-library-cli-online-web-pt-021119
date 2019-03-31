@@ -1,6 +1,6 @@
 class MusicImporter
 
-attr_readerl :path
+attr_reader :path
 
 def initialize(path)
 @path = path
