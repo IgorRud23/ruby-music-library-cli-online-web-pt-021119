@@ -48,4 +48,7 @@ def self.find_or_create_by_name(name)
   self.find_by_name(name) || self.create(name)
 end
 
+def self.new_from_filename(file_name)
+  
+end
 end
