@@ -5,7 +5,7 @@ module Concerns
   module Findable
 
     def self.find_by_name(name)
-    self.all.class.find do |object|
+    self.all.find do |object|
       object.name == name
     end
     end
